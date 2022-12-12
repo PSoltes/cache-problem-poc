@@ -1,5 +1,5 @@
-import { getSession } from "@auth0/nextjs-auth0"
 import { NextApiHandlerWithUser } from "src/utils/auth/withApiAuth"
+import { getSession } from "utils/auth/auth0"
 
 export const handlerWithHeaders: NextApiHandlerWithUser<any> = async (req, res): Promise<void> => {
   try {
@@ -17,6 +17,7 @@ export const handlerWithHeaders: NextApiHandlerWithUser<any> = async (req, res):
     res.status(200).json(data)
     return
   } catch (err: unknown) {
+    console.log(err)
     res.status(500).json({ message: 'Something went wrong' })
   }
 }
