@@ -31,13 +31,9 @@
     "test:e2e:ci": "cross-env-shell CYPRESS=true \"npm run dev & wait-on http://localhost:3000 && npm run test:e2e\"",
     "lint": "eslint src tests internal config --ext .js,.jsx,.ts,.tsx --report-unused-disable-directives",
     "lint:fix": "npm run lint -- --fix",
-    "postinstall": "patch-package",
-    "prestart": "patch-package",
     "analyze": "ANALYZE=true next build",
     "changelog:update": "semantic-release",
-    "type-check": "tsc",
-    "encrypt-secrets:ci": "node internal/scripts/vercelSecrets/encrypt.js",
-    "update-global-css:ci": "node internal/scripts/pdfHelpers/updateGlobalCss.js"
+    "type-check": "tsc"
   },
   "dependencies": {
     "@swc/helpers": "^0.4.12",
