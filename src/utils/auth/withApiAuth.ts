@@ -97,5 +97,7 @@ export const withApiAuth: WithApiAuth = (callback) => async (req, res) => {
 
   req.user = session.user
 
+  res.setHeader('Cache-Control', 'max-age=0, public, s-maxage=3600, stale-while-revalidate=43200')
+
   return callback(req as NextApiRequestWithUser, res)
 }
