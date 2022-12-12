@@ -37,6 +37,15 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/api/v2/auth/config',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'max-age=0, public, s-maxage=3600, stale-while-revalidate=43200',
+          },
+        ],
+      },
     ]
   },
   async redirects() {

@@ -8,7 +8,7 @@ export interface NextApiRequestWithUser extends NextApiRequest {
   accessToken: string
 }
 
-type NextApiHandlerWithUser<T = never> = (
+export type NextApiHandlerWithUser<T = never> = (
   req: NextApiRequestWithUser,
   res: NextApiResponse<T>
 ) => void | Promise<void> | Promise<unknown>

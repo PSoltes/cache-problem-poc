@@ -1,6 +1,6 @@
-import { withApiAuth } from "src/utils/auth/withApiAuth"
+import { NextApiHandlerWithUser } from "src/utils/auth/withApiAuth"
 
-export const handlerWithHeaders = withApiAuth(async (req, res): Promise<void> => {
+export const handlerWithHeaders: NextApiHandlerWithUser<any> = async (req, res): Promise<void> => {
   try {
     const resp = await fetch('https://api.punkapi.com/v2/beers')
     let data = {}
@@ -17,4 +17,4 @@ export const handlerWithHeaders = withApiAuth(async (req, res): Promise<void> =>
   } catch (err: unknown) {
     res.status(500).json({ message: 'Something went wrong' })
   }
-})
+}
