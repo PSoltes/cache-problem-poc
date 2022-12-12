@@ -1,3 +1,4 @@
+import { getSession } from "@auth0/nextjs-auth0"
 import { NextApiHandlerWithUser } from "src/utils/auth/withApiAuth"
 
 export const handlerWithHeaders: NextApiHandlerWithUser<any> = async (req, res): Promise<void> => {
@@ -11,6 +12,7 @@ export const handlerWithHeaders: NextApiHandlerWithUser<any> = async (req, res):
         data = { text: await resp.text() }
       }
     }
+    const session = await getSession(req, res)
     res.setHeader('Cache-Control', 'max-age=0, public, s-maxage=3600, stale-while-revalidate=43200')
     res.status(200).json(data)
     return
