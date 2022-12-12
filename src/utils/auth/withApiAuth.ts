@@ -23,7 +23,7 @@ export const withApiAuth: WithApiAuth = (callback) => async (req, res) => {
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    req.accessToken = accessToken
+    // req.accessToken = accessToken
 
     console.log('Got access token from token cache', {
       req,
