@@ -27,6 +27,9 @@
       "pages/*": [
         "src/pages/*"
       ],
+      "utils/*": [
+        "src/utils/*"
+      ]
     },
     "incremental": true
   },
