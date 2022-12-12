@@ -5,7 +5,6 @@ import { auth0Configs } from './auth0Configs'
 
 const auth0 = initAuth0({
   ...auth0Configs,
-  Store: redisStore
 })
 
 const {
