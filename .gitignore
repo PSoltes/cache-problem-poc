@@ -1,0 +1,17 @@
+.idea
+.next
+.env
+.vscode
+.sessions
+node_modules
+.DS_Store
+/reports
+/src/certificates
+storybook-static
+report.*
+.env*.local
+.history
+newrelic_agent.log
+.vercel
+/lib/**/*.*
+tsconfig.tsbuildinfo

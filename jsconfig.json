@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "react",
+    "paths": {
+      "internal/*": ["internal/*"],
+      "utils/*": ["src/utils/*"],
+      "presentation/*": ["src/presentation/*"],
+      "controllers/*": ["src/controllers/*"],
+      "services/*": ["src/services/*"],
+      "pages/*": ["src/pages/*"],
+      "layouts/*": ["src/layouts/*"],
+      "assets/*": ["src/assets/*"],
+      "config": ["src/config"]
+    }
+  },
+  "exclude": ["node_modules", "dist", ".next"]
+}
