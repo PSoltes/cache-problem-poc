@@ -19,7 +19,7 @@ interface WithApiAuth {
 
 export const withApiAuth: WithApiAuth = (callback) => async (req, res) => {
   try {
-    const { accessToken } = await getAccessToken(req, res)
+    // const { accessToken } = await getAccessToken(req, res)
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -83,19 +83,19 @@ export const withApiAuth: WithApiAuth = (callback) => async (req, res) => {
     return undefined
   }
 
-  const session = await getSession(req, res)
+  // const session = await getSession(req, res)
 
-  if (!session) {
-    res.status(401).json({
-      error: 'not_authenticated',
-      description:
-        'The user does not have an active session or is not authenticated',
-    })
+  // if (!session) {
+  //   res.status(401).json({
+  //     error: 'not_authenticated',
+  //     description:
+  //       'The user does not have an active session or is not authenticated',
+  //   })
 
-    return undefined
-  }
+  //   return undefined
+  // }
 
-  req.user = session.user
+  // req.user = session.user
 
   res.setHeader('Cache-Control', 'max-age=0, public, s-maxage=3600, stale-while-revalidate=43200')
 
