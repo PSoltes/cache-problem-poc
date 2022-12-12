@@ -1,1 +1,1 @@
-export { handlerWithHeaders as default } from 'presentation/pages/api/v2/handlerWithHeaders'
+export { handlerWithoutSession as default } from 'presentation/pages/api/v2/handlers'

@@ -1,0 +1,1 @@
+export {handlerWithSession as default} from 'src/presentation/pages/api/v2/handlers'

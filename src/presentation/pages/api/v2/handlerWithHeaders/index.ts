@@ -1,1 +1,0 @@
-export { handlerWithHeaders } from './handlerWithHeaders'
