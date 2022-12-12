@@ -1,16 +1,12 @@
-import { AccessTokenError } from '@auth0/nextjs-auth0'
+import { AccessTokenError, Session } from '@auth0/nextjs-auth0'
 import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next'
 
-import { getSession, getAccessToken } from 'src/utils/auth/auth0'
-
-export interface NextApiRequestWithUser extends NextApiRequest {
-  user: any
-  accessToken: string
-}
+import { getSession } from 'src/utils/auth/auth0'
 
 export type NextApiHandlerWithUser<T = never> = (
-  req: NextApiRequestWithUser,
-  res: NextApiResponse<T>
+  req: NextApiRequest,
+  res: NextApiResponse<T>,
+  session: Session
 ) => void | Promise<void> | Promise<unknown>
 
 interface WithApiAuth {
@@ -83,21 +79,19 @@ export const withApiAuth: WithApiAuth = (callback) => async (req, res) => {
     return undefined
   }
 
-  // const session = await getSession(req, res)
+  const session = await getSession(req, res)
 
-  // if (!session) {
-  //   res.status(401).json({
-  //     error: 'not_authenticated',
-  //     description:
-  //       'The user does not have an active session or is not authenticated',
-  //   })
+  if (!session) {
+    res.status(401).json({
+      error: 'not_authenticated',
+      description:
+        'The user does not have an active session or is not authenticated',
+    })
 
-  //   return undefined
-  // }
-
-  // req.user = session.user
+    return undefined
+  }
 
   res.setHeader('Cache-Control', 'max-age=0, public, s-maxage=3600, stale-while-revalidate=43200')
 
-  return callback(req as NextApiRequestWithUser, res)
+  return callback(req, res, session)
 }
